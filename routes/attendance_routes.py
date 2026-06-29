@@ -71,7 +71,7 @@ def update_attendance(attendance_id):
 
 
 @attendance_bp.route(
-    "/attendance/<attendance_id",
+    "/attendance/<attendance_id>",
     methods= ["DELETE"]
 )
 
