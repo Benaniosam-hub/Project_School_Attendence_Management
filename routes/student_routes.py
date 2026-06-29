@@ -32,6 +32,24 @@ def add_student():
         "student": student
     }, 201
 
+@student_bp.route("/students/<student_id>", methods=["PUT"])
+def update_student(student_id):
+
+    data = request.get_json()
+
+    student = student_controller.update_student(
+        student_id,
+        data["student_name"],
+        data["gender"],
+        data["date_of_birth"],
+        data["class_id"]
+    )
+
+    return {
+        "message": "Student updated successfully.",
+        "student": student
+    }
+
 @student_bp.route("/students/<student_id>",methods=["DELETE"])
 def delete_student(student_id):
 

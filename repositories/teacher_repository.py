@@ -88,14 +88,16 @@ class TeacherRepository:
         return teacher
     
     def update_teacher(
-            self,
-            teacher_id,
-            teacher_name,
-            username,
-            password,
-            email,
-            phone
-    ):
+           self,
+           teacher_id,
+           teacher_name,
+           username,
+           password,
+           email,
+           phone
+
+           ):
+        
         connection = get_connection()
 
         cursor = connection.cursor(
@@ -113,6 +115,14 @@ class TeacherRepository:
             WHERE teacher_id = %s
             RETURNING teacher_id;
          """
+        print(
+            teacher_id,
+            teacher_name,
+            username,
+            password,
+            email,
+            phone
+            )
         
         cursor.execute(
             query,
@@ -123,6 +133,7 @@ class TeacherRepository:
                 email,
                 phone,
                 teacher_id
+                
             )
         )
 
@@ -148,8 +159,7 @@ class TeacherRepository:
 
         query = """
             UPDATE teachers
-            SET
-                is_active = FALSE
+            SET is_active = false
             WHERE teacher_id = %s
             RETURNING teacher_id;
         """
@@ -160,6 +170,8 @@ class TeacherRepository:
         )
 
         teacher = cursor.fetchone()
+
+        print("Repository:",teacher)
 
         connection.commit()
 

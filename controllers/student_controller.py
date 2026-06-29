@@ -11,6 +11,22 @@ class StudentController:
     def add_student(self,student_name,gender,date_of_birth,class_id):
         return self.student_service.add_student(student_name,gender,date_of_birth,class_id)
     
+    def update_student(
+            self,
+            student_id,
+            student_name,
+            gender,
+            date_of_birth,
+            class_id
+    ):
+        return self.student_service.update_student(
+            student_id,
+            student_name,
+            gender,
+            date_of_birth,
+            class_id
+        )
+    
     def delete_student(
             self,
             student_id

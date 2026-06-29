@@ -34,7 +34,7 @@ def add_attendance():
     attendance = attendance_controller.add_attendance(
         data["student_id"],
         data["teacher_id"],
-        data["attendance_data"],
+        data["attendance_date"],
         data["session"],
         data["status"],
         data.get("remarks")

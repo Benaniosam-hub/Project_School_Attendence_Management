@@ -86,8 +86,8 @@ class ClassRepository:
             UPDATE classes
             SET
                 class_name = %s,
-                teacher_id = %s,
-            WHERE class_id = %s,
+                teacher_id = %s
+            WHERE class_id = %s
             RETURNING class_id;
         """
 

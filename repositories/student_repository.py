@@ -80,6 +80,51 @@ class StudentRepository:
 
         return student
     
+    def update_student(
+            self,
+            student_id,
+            student_name,
+            gender,
+            date_of_birth,
+            class_id
+    ):
+        connection = get_connection()
+
+        cursor = connection.cursor(
+            cursor_factory=RealDictCursor
+        )
+
+        query = """
+            UPDATE students
+            SET
+                student_name = %s,
+                gender = %s,
+                date_of_birth = %s,
+                class_id = %s
+            WHERE student_id = %s
+            RETURNING student_id;
+        """
+
+        cursor.execute(
+            query,
+            (
+                student_name,
+                gender,
+                date_of_birth,
+                class_id,
+                student_id
+            )
+        )
+
+        student = cursor.fetchone()
+
+        connection.commit()
+
+        cursor.close()
+        connection.close()
+
+        return student
+    
     def delete_student(
             self,
             student_id

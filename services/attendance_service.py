@@ -42,7 +42,7 @@ class AttendanceService:
             attendance_id,
             student_id,
             teacher_id,
-            attendance_id,
+            attendance_date,
             session,
             status,
             remarks
