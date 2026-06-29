@@ -54,7 +54,7 @@ def update_class(class_id):
     }
 
 @class_bp.route(
-    "/classes/<class_id",
+    "/classes/<class_id>",
     methods = ["DELETE"]
 )
 def delete_class(class_id):

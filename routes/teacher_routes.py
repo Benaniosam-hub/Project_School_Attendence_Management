@@ -48,6 +48,7 @@ def update_teacher(teacher_id):
         teacher_id,
         data["teacher_name"],
         data["username"],
+        data["password"],
         data["email"],
         data["phone"]
     )

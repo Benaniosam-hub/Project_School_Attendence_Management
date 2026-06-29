@@ -46,7 +46,7 @@ class AttendanceRepository:
             self,
             student_id,
             teacher_id,
-            attendance_data,
+            attendance_date,
             session,
             status,
             remarks
@@ -62,7 +62,7 @@ class AttendanceRepository:
             (
                 student_id,
                 teacher_id,
-                attendance_data,
+                attendance_date,
                 session,
                 status,
                 remarks
@@ -87,7 +87,7 @@ class AttendanceRepository:
             (
                 student_id,
                 teacher_id,
-                attendance_data,
+                attendance_date,
                 session,
                 status,
                 remarks
@@ -108,7 +108,7 @@ class AttendanceRepository:
             attendance_id,
             student_id,
             teacher_id,
-            attendance_data,
+            attendance_date,
             session,
             status,
             remarks
@@ -124,7 +124,7 @@ class AttendanceRepository:
             SET
                 student_id = %s,
                 teacher_id = %s,
-                attendance_data = %s,
+                attendance_date = %s,
                 session = %s,
                 status = %s,
                 remarks = %s
@@ -137,7 +137,7 @@ class AttendanceRepository:
             (
                 student_id,
                 teacher_id,
-                attendance_data,
+                attendance_date,
                 session,
                 status,
                 remarks,

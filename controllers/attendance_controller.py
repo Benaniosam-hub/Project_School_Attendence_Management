@@ -14,7 +14,7 @@ class AttendanceController:
             self,
             student_id,
             teacher_id,
-            attendance_data,
+            attendance_date,
             session,
             status,
             remarks
@@ -22,8 +22,9 @@ class AttendanceController:
         return self.attendance_service.add_attendance(
             student_id,
             teacher_id,
-            attendance_data,
+            attendance_date,
             session,
+            status,
             remarks
         )
     
