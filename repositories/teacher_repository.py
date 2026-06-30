@@ -179,3 +179,9 @@ class TeacherRepository:
         connection.close()
 
         return teacher
+    
+    def get_teacher_by_username(
+            self,
+            username
+    ):
+        pass
