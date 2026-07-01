@@ -1,4 +1,6 @@
+import bcrypt
 from repositories.teacher_repository import TeacherRepository
+from utils.auth import verify_password, create_token
 
 class TeacherService:
 
@@ -16,10 +18,15 @@ class TeacherService:
             email,
             phone
     ):
+        hashed_password = bcrypt.hashpw(
+            password.encode("utf-8"),
+            bcrypt.gensalt()    
+        ).decode("utf-8")
+
         return self.teacher_repository.add_teacher(
             teacher_name,
             username,
-            password,
+            hashed_password,
             email,
             phone
         )
@@ -49,3 +56,32 @@ class TeacherService:
         return self.teacher_repository.delete_teacher(
             teacher_id
         )
+    
+    def login_teacher(
+            self,
+            username,
+            password
+    ):
+        teacher = self.teacher_repository.login_teacher(
+            username
+        )
+
+        if teacher is None:
+            return None
+        if not teacher["is_active"]:
+            return None
+        if not verify_password(
+            password,
+            teacher["password"]
+        ):
+            return None
+        
+        token = create_token(
+            teacher["teacher_id"]
+        )
+
+        return {
+            "teacher_id": teacher["teacher_id"],
+            "username": teacher["username"],
+            "token": token
+        }

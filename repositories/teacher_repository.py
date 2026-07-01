@@ -185,3 +185,35 @@ class TeacherRepository:
             username
     ):
         pass
+
+    def login_teacher(
+            self,
+            username
+    ):
+        connection = get_connection()
+
+        cursor = connection.cursor(
+            cursor_factory=RealDictCursor
+        )
+
+        query = """
+            SELECT 
+            teacher_id,
+            username,
+            password,
+            is_active
+        FROM teachers
+        WHERE username = %s;
+        """
+
+        cursor.execute(
+            query,
+            (username,)
+        )
+
+        teacher = cursor.fetchone()
+
+        cursor.close()
+        connection.close()
+
+        return teacher

@@ -54,3 +54,14 @@ class TeacherController:
             teacher_id
         )
     
+    def login_teacher(
+            self,
+            username,
+            password
+    ):
+        return self.teacher_service.login_teacher(
+            username,
+            password
+        )
+    
+
