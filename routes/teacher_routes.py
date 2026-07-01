@@ -1,5 +1,7 @@
 from flask import Blueprint, request
 
+from utils.auth import jwt_required
+
 from controllers.teacher_controller import TeacherController
 
 teacher_bp = Blueprint("teacher_bp",__name__)
@@ -7,6 +9,7 @@ teacher_bp = Blueprint("teacher_bp",__name__)
 teacher_controller = TeacherController()
 
 @teacher_bp.route("/teachers", methods= ["GET"])
+@jwt_required
 def get_all_teachers():
 
     teachers = teacher_controller.get_all_teachers()

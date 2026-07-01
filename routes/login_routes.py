@@ -10,8 +10,8 @@ def login():
     data = request.get_json()
 
     teacher = teacher_controller.login_teacher(
-        data["username"],
-        data["password"]
+        username = data.get("username"),
+        password = data.get("password")
     )
 
     if teacher is None:
